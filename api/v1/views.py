@@ -8,6 +8,7 @@ from rest_framework.permissions import AllowAny, IsAdminUser
 
 from . import serializers as s
 from .sqs import LeadQueue
+from .sns import LeadSNS
 
 
 class LeadCreate(generics.CreateAPIView):
@@ -24,8 +25,11 @@ class LeadCreate(generics.CreateAPIView):
             email = serializer.validated_data["email"]
             subject = serializer.validated_data["subject"]
             message = serializer.validated_data["message"]
-            lead = LeadQueue(name, email, subject, message)
-            lead.queue()
+            try:
+                lead = LeadSNS(name, email, subject, message)
+                lead.send()
+            except Exception:
+                pass
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors)

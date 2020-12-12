@@ -6,7 +6,7 @@ from botocore.exceptions import BotoCoreError
 
 from . import exceptions as e
 
-QUEUE_NAME = os.getenv("QUEUE_NAME", "33333")
+QUEUE_NAME = os.getenv("QUEUE_NAME", "sqs_leads_generator")
 REGION = os.getenv("REGION", 'us-east-1')
 
 
