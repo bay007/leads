@@ -49,5 +49,5 @@ class FailView(APIView):
     """
 
     def get(self, request):
-        import sys
-        sys.exit(-128)
+        
+        return Response("Hola")

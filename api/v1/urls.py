@@ -8,5 +8,6 @@ from . import views as v
 urlpatterns = [
     path('', v.StatusView.as_view()),
     path('leads/', v.LeadCreate.as_view()),
-    path('fail/', v.FailView.as_view())
+    path('fail/', v.FailView.as_view()),
+    path('hola/', v.FailView.as_view())
 ]
